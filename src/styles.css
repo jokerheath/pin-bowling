@@ -1,1 +1,110 @@
 /* Add application styles & imports to this file! */
+html {
+  background-image: url('images/bowling.jpg');
+  background-size: cover;
+}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  color: white;
+  margin-top: 15%;
+  margin-left: 25%;
+  width: 50%;
+}
+
+#roll {
+  vertical-align: middle;
+  text-align: center;
+  display: table-cell;
+  width: 50%;
+  height: 30%;
+  margin-top: 40%;
+  background-color: rgba(230, 100, 245, 0.8);
+  border-radius: 5px;
+  border-width: 0;
+  color: white;
+  font-weight: bold;
+}
+
+#roll:hover {
+  background-color: rgba(91, 35, 182, 0.8);
+}
+
+.ball {
+  display: table;
+  text-align: center;
+  border-radius: 300px;
+  background-color: rgb(115, 25, 230);
+  background-image: url('images/bowling_ball.png');
+  background-size: cover;
+  width: 100px;
+  height: 100px;
+  position: relative;
+}
+
+.rolling {
+  border-radius: 300px;
+  background-color: rgb(115, 25, 230);
+  background-image: url('images/bowling_ball.png');
+  background-size: cover;
+  width: 100px;
+  height: 100px;
+  position: relative;
+  animation-name: ball;
+  animation-duration: 4s;
+  animation-iteration-count: 1;
+}
+
+@keyframes ball {
+  0% {
+    left: 0px;
+  }
+  100% {
+    transform: rotate(1080deg);
+    left: 800px;
+  }
+}
+
+.score {
+  border-radius: 15px;
+  padding: 5px;
+  text-align: center;
+  width: auto;
+  height: 30px;
+  font-size: 20px;
+  font-weight: bold;
+  background-image: repeating-linear-gradient(
+    -60deg,
+    rgba(91, 35, 182, 0.8) 5%,
+    rgba(230, 100, 245, 0.8) 10%
+  );
+}
+
+table {
+  background-image: linear-gradient(
+    45deg,
+    rgba(91, 35, 182, 0.8),
+    rgba(230, 100, 245, 0.8)
+  );
+}
+
+table,
+td {
+  border: 1px solid rgb(115, 25, 230);
+  border-radius: 3px;
+  border-top-left-radius: 15px;
+  text-align: center;
+}
+
+tr {
+  height: 50px;
+}
+
+th,
+td {
+  width: 100px;
+}
+
+td {
+  background-color: rgba(197, 148, 214, 0.59);
+}

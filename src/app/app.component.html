@@ -1,4 +1,84 @@
-<hello name="{{ name }}"></hello>
-<p>
-  Start editing to see some magic happen :)
-</p>
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Bowling</title>
+    <meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="../../src/styles.css" />
+  </head>
+
+  <body>
+    <div class="ball"><button id="roll">ROLL</button></div>
+
+    <section id="current-roll">
+      <div class="score">You scored: <span id="score"> </span></div>
+      <br />
+    </section>
+
+    <section id="#score-board">
+      <table>
+        <tbody>
+          <tr>
+            <th>Player</th>
+            <th colspan="2">1</th>
+            <th colspan="2">2</th>
+            <th colspan="2">3</th>
+            <th colspan="2">4</th>
+            <th colspan="2">5</th>
+            <th colspan="2">6</th>
+            <th colspan="2">7</th>
+            <th colspan="2">8</th>
+            <th colspan="2">9</th>
+            <th colspan="2">10</th>
+            <th colspan="2">Total</th>
+          </tr>
+          <tr id="scores">
+            <th rowspan="2"><span id="player-name">Mr Cool</span></th>
+            <td><span id="roll-1"></span></td>
+            <td><span id="roll-2"></span></td>
+            <td><span id="roll-3"></span></td>
+            <td><span id="roll-4"></span></td>
+            <td><span id="roll-5"></span></td>
+            <td><span id="roll-6"></span></td>
+            <td><span id="roll-7"></span></td>
+            <td><span id="roll-8"></span></td>
+            <td><span id="roll-9"></span></td>
+            <td><span id="roll-10"></span></td>
+            <td><span id="roll-11"></span></td>
+            <td><span id="roll-12"></span></td>
+            <td><span id="roll-13"></span></td>
+            <td><span id="roll-14"></span></td>
+            <td><span id="roll-15"></span></td>
+            <td><span id="roll-16"></span></td>
+            <td><span id="roll-17"></span></td>
+            <td><span id="roll-18"></span></td>
+            <td><span id="roll-19"></span></td>
+            <td><span id="roll-20"></span></td>
+            <td rowspan="2"><span id="total"></span></td>
+          </tr>
+          <tr>
+            <td colspan="2"><span id="turn-score-0"></span></td>
+            <td colspan="2"><span id="turn-score-1"></span></td>
+            <td colspan="2"><span id="turn-score-2"></span></td>
+            <td colspan="2"><span id="turn-score-3"></span></td>
+            <td colspan="2"><span id="turn-score-4"></span></td>
+            <td colspan="2"><span id="turn-score-5"></span></td>
+            <td colspan="2"><span id="turn-score-6"></span></td>
+            <td colspan="2"><span id="turn-score-7"></span></td>
+            <td colspan="2"><span id="turn-score-8"></span></td>
+            <td colspan="2"><span id="turn-score-9"></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- <script src="src/Bowling.js"></script>
+    <script src="src/ScoreBoard.js"></script>
+    <script src="src/MainScreen.js"></script> -->
+  </body>
+</html>
