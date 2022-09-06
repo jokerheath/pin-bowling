@@ -9,57 +9,57 @@ export class ScoreBoardComponent implements OnInit {
   firstScore: 0;
   secondScore: 0;
   isFirstTurn: Boolean = true;
-  frame: [];
-  allFrames: [];
+  frame: any = [];
+  allFrames: any = [];
   turn: 0;
   allTotals: [];
-  frameArray: [];
+  frameArray: any = [];
   gameTotal: 0;
 
   constructor() {}
 
   ngOnInit() {}
 
-  firstRoll = function (score) {
+  firstRoll(score) {
     this.firstScore = score;
     this.frame = [];
     this.frame.push(score);
     return this.firstScore.toString();
-  };
+  }
 
-  secondRoll = function (score) {
+  secondRoll(score) {
     this.secondScore = score;
     this.frame.push(score);
     this.storeFrames(this.frame);
     return this.secondScore.toString();
-  };
+  }
 
-  rollTurn = function () {
+  rollTurn() {
     if (this.frame.length % 2 === 0) {
       this.isFirstTurn = true;
       return this.isFirstTurn;
     }
     this.isFirstTurn = false;
     return this.isFirstTurn;
-  };
+  }
 
-  getScore = function (score) {
+  getScore(score) {
     if (this.rollTurn() === true) {
       return this.firstRoll(score);
     }
     return this.secondRoll(score);
-  };
+  }
 
-  storeFrames = function (frame) {
+  storeFrames(frame) {
     this.allFrames.push(frame);
-  };
+  }
 
-  currentTurn = function () {
+  currentTurn() {
     this.turn = this.allFrames.length;
     return this.turn;
-  };
+  }
 
-  turnTotal = function () {
+  turnTotal() {
     this.currentTurn();
     this.frameArray = this.allFrames[this.turn - 1];
     if (this.frame.length == 2) {
@@ -68,10 +68,10 @@ export class ScoreBoardComponent implements OnInit {
       var frameTotal = this.frame[0];
     }
     return frameTotal;
-  };
+  }
 
-  sumTotal = function (total) {
+  sumTotal(total) {
     console.log((this.gameTotal += total));
     return this.gameTotal;
-  };
+  }
 }

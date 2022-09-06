@@ -18,12 +18,12 @@ export class AppComponent implements OnInit {
   score: any;
   //test = true;
   rollScore: 0;
-  scoreString: '0';
+  scoreString: string;
   timeOut: any;
   i: 0;
   total: '0';
   turn: '0';
-  gameTotal: 0;
+  gameTotal: number;
 
   constructor(
     private scoreboard: ScoreBoardComponent,
@@ -52,9 +52,11 @@ export class AppComponent implements OnInit {
     //this.addRemoveClass.classList.remove('ball');
     //$('.ball').attr('class', 'rolling');
     //this._renderer.setAttribute(this.ball.nativeElement, 'class', 'rolling');
-
+    console.log('hre');
     this.rollScore = this.bowling.roll(3);
+    console.log('therehre' + this.rollScore);
     this.scoreString = this.scoreboard.getScore(this.rollScore);
+    console.log('scoreString' + this.scoreString);
     this.total = this.scoreboard.turnTotal();
     this.gameTotal = this.scoreboard.sumTotal(this.rollScore);
     var num = (this.i += 1);
