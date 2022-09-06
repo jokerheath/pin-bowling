@@ -1,6 +1,6 @@
 /* Add application styles & imports to this file! */
 html {
-  background-image: url('images/bowling.jpg');
+  background-image: url('./assets/bowling.jpg');
   background-size: cover;
 }
 body {
@@ -35,7 +35,7 @@ body {
   text-align: center;
   border-radius: 300px;
   background-color: rgb(115, 25, 230);
-  background-image: url('images/bowling_ball.png');
+  background-image: url('./assets/bowling_ball.png');
   background-size: cover;
   width: 100px;
   height: 100px;
@@ -45,7 +45,7 @@ body {
 .rolling {
   border-radius: 300px;
   background-color: rgb(115, 25, 230);
-  background-image: url('images/bowling_ball.png');
+  background-image: url('./assets/bowling_ball.png');
   background-size: cover;
   width: 100px;
   height: 100px;

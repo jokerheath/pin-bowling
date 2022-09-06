@@ -13,7 +13,9 @@
   </head>
 
   <body>
-    <div class="ball"><button id="roll">ROLL</button></div>
+    <div class="ball" (click)="roll()">
+      <button id="roll">ROLL</button>
+    </div>
 
     <section id="current-roll">
       <div class="score">You scored: <span id="score"> </span></div>

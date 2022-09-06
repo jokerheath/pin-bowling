@@ -1,4 +1,12 @@
-import { Component, OnInit, VERSION } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnInit,
+  Renderer2,
+  VERSION,
+} from '@angular/core';
+import { BowlingComponent } from './scoreBoard/bowling/bowling.component';
+import { ScoreBoardComponent } from './scoreBoard/score-board/score-board.component';
 
 @Component({
   selector: 'my-app',
@@ -7,66 +15,64 @@ import { Component, OnInit, VERSION } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   name = 'Angular ' + VERSION.major;
+  score: any;
+  //test = true;
+  rollScore: 0;
+  scoreString: '0';
+  timeOut: any;
+  i: 0;
+  total: '0';
+  turn: '0';
+  gameTotal: 0;
 
-  ngOnInit() {
-    //  TenPin Bowling
+  constructor(
+    private scoreboard: ScoreBoardComponent,
+    private bowling: BowlingComponent,
+    private el: ElementRef,
+    private _renderer: Renderer2
+  ) {}
 
-    // frames = '11 11 11 11 11 11 11 11 11 11'
-    function bowlingScore(frames) {
-      let score = 0;
-      let frame = frames.split(' ');
-      if (frames.replace(/\s/g, '') === 'XXXXXXXXXXXX') {
-        score = 300;
-      } else {
-        for (let i = 0; i < frame.length; i++) {
-          if (i === frame.length - 1) {
-            frame = frame[i].split('');
-            for (let j = 0; j < frame.length; j++) {
-              !isNaN(frame[j]) && frame[j + 1] !== '/'
-                ? (score = score + parseInt(frame[j]))
-                : frame[j] === 'X' || frame[j] === '/'
-                ? (score = score + 10)
-                : null;
-            }
-          } else {
-            !isNaN(frame[i])
-              ? (score = score + parseInt(frame[i][0]) + parseInt(frame[i][1]))
-              : frame[i].includes('X') && !isNaN(frame[i + 1])
-              ? (score =
-                  score +
-                  10 +
-                  parseInt(frame[i + 1][0]) +
-                  parseInt(frame[i + 1][1]))
-              : frame[i].includes('/') && !isNaN(frame[i + 1])
-              ? (score = score + 10 + parseInt(frame[i + 1][0]))
-              : null;
-          }
-        }
-      }
-      return score;
-    }
-
-    // Numerical
-    console.log(bowlingScore('11'), 20);
-    console.log(bowlingScore('15 27 81 43 26 05 16 22 13 43'), 66);
-    console.log(bowlingScore('15 27 81 43 43 26 05 16 22 31'), 66);
-    // Numerical w/ Strikes
-    console.log(bowlingScore('X 11 11 11 X 11 11 11 11 11'), 40);
-    // console.log(bowlingScore('X 15 17 43 X 17 36 62 11 00'), 82);
-    // console.log(bowlingScore('X 15 17 43 X 17 36 62 11 71'), 90);
-    // console.log(bowlingScore('X 15 17 43 X 17 36 62 00 XXX'), 100);
-    // console.log(bowlingScore('X 15 17 43 X 17 36 62 53 XXX'), 118);
-    // console.log(bowlingScore('X 15 17 43 X 17 36 62 45 3/X'), 109);
-    // // Numerical w/ Spares
-    // console.log(bowlingScore('/ 11 11 11 / 11 11 11 11 11'), 38);
-    // console.log(bowlingScore('/ 21 34 52 / 71 90 32 45 5/X'), 97);
-    // console.log(bowlingScore('X 15 17 43 X 17 36 / 62 3/X'), 116);
-    // // Perfect Game
-    // console.log(bowlingScore('X X X X X X X X X XXX'), 300);
+  addRemoveClass() {
+    //let myTag = this.el.nativeElement.querySelector("p"); // you can select html element by getelementsByClassName also, please use as per your requirement.
+    //return document.getElementById('roll').getElementsByClassName('ball');
   }
 
-  getRandomNumber() {
-    console.log(Math.floor(Math.random() * (10 - 0 + 1)) + 0);
-    return Math.floor(Math.random() * (10 - 0 + 1)) + 0;
+  // hideNavBar() {
+  //   this.test = false;
+  // }
+
+  ngOnInit() {
+    //$(document).ready(function () {
+    //var bowling = this.bowling;
+    //var scoreBoard = this.scoreboard;
+
+    //$('#roll').click(function () {
+    // $('#roll').hide();
+    //roll(){
+    //this.addRemoveClass.classList.remove('ball');
+    //$('.ball').attr('class', 'rolling');
+    //this._renderer.setAttribute(this.ball.nativeElement, 'class', 'rolling');
+
+    this.rollScore = this.bowling.roll(3);
+    this.scoreString = this.scoreboard.getScore(this.rollScore);
+    this.total = this.scoreboard.turnTotal();
+    this.gameTotal = this.scoreboard.sumTotal(this.rollScore);
+    var num = (this.i += 1);
+    this.timeOut = setTimeout(function () {
+      //$('.rolling').attr('class', 'ball');
+      this._renderer.setAttribute(this.rolling.nativeElement, 'class', 'ball');
+
+      //$('#score').text(this.scoreString);
+      //document.getElementById('score').classList.te;
+      // $('#roll').show();
+      document.getElementById('roll').classList.add;
+      //$('#roll-' + num).text(this.scoreString);
+      //$('#turn-score-' + this.turn).text(this.total);
+      //$('#total').text(this.gameTotal);
+      this.turn = this.scoreboard.currentTurn().toString();
+    }, 2000);
+    // };
+    //});
+    //});
   }
 }
