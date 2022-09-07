@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 import { BowlingComponent } from './scoreBoard/bowling/bowling.component';
 import { ScoreBoardComponent } from './scoreBoard/score-board/score-board.component';
+var $: any;
 
 @Component({
   selector: 'my-app',
@@ -22,8 +23,8 @@ export class AppComponent implements OnInit {
   timeOut: any;
   i: 0;
   total: '0';
-  turn: '0';
-  gameTotal: number;
+  turn: string;
+  gameTotal: any;
 
   constructor(
     private scoreboard: ScoreBoardComponent,
@@ -42,39 +43,39 @@ export class AppComponent implements OnInit {
   // }
 
   ngOnInit() {
-    //$(document).ready(function () {
-    //var bowling = this.bowling;
-    //var scoreBoard = this.scoreboard;
+    this.roll();
+  }
 
-    //$('#roll').click(function () {
-    // $('#roll').hide();
-    //roll(){
-    //this.addRemoveClass.classList.remove('ball');
-    //$('.ball').attr('class', 'rolling');
-    //this._renderer.setAttribute(this.ball.nativeElement, 'class', 'rolling');
-    console.log('hre');
-    this.rollScore = this.bowling.roll(3);
-    console.log('therehre' + this.rollScore);
-    this.scoreString = this.scoreboard.getScore(this.rollScore);
-    console.log('scoreString' + this.scoreString);
-    this.total = this.scoreboard.turnTotal();
-    this.gameTotal = this.scoreboard.sumTotal(this.rollScore);
-    var num = (this.i += 1);
-    this.timeOut = setTimeout(function () {
-      //$('.rolling').attr('class', 'ball');
-      this._renderer.setAttribute(this.rolling.nativeElement, 'class', 'ball');
+  roll() {
+    $(document).ready(function () {
+      var bowling = this.bowling;
+      var scoreBoard = this.scoreboard;
+      var rollScore = 0;
+      var scoreString = '0';
+      var timeOut = 0;
+      var i = 0;
+      var total = '0';
+      var turn = '0';
+      var gameTotal = 0;
 
-      //$('#score').text(this.scoreString);
-      //document.getElementById('score').classList.te;
-      // $('#roll').show();
-      document.getElementById('roll').classList.add;
-      //$('#roll-' + num).text(this.scoreString);
-      //$('#turn-score-' + this.turn).text(this.total);
-      //$('#total').text(this.gameTotal);
-      this.turn = this.scoreboard.currentTurn().toString();
-    }, 2000);
-    // };
-    //});
-    //});
+      $('#roll').click(function () {
+        $('#roll').hide();
+        $('.ball').attr('class', 'rolling');
+        rollScore = bowling.roll();
+        scoreString = scoreBoard.getScore(rollScore);
+        total = scoreBoard.turnTotal();
+        gameTotal = scoreBoard.sumTotal(rollScore);
+        var num = (i += 1);
+        timeOut = setTimeout(function () {
+          $('.rolling').attr('class', 'ball');
+          $('#score').text(scoreString);
+          $('#roll').show();
+          $('#roll-' + num).text(scoreString);
+          $('#turn-score-' + turn).text(total);
+          $('#total').text(gameTotal);
+          turn = scoreBoard.currentTurn().toString();
+        }, 2000);
+      });
+    });
   }
 }
