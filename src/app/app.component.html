@@ -1,4 +1,8 @@
 
+<hello name="{{ name }}"> </hello> {{ wish }}
+<p>Enter Your Name</p>
+<input type="text" [(ngModel)]="name" />
+
 <!DOCTYPE html>
 
 <html>
@@ -40,7 +44,9 @@
             <th colspan="2">Total</th>
           </tr>
           <tr id="scores">
-            <th rowspan="2"><span id="player-name">Mr Cool</span></th>
+            <th rowspan="2">
+              <span id="player-name">{{ name }}</span>
+            </th>
 
             <td>
               <span id="roll-1">{{ rolls[0] }} </span>
