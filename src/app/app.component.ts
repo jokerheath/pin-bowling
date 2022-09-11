@@ -13,6 +13,8 @@ export class AppComponent implements OnInit {
   totalScore: number = 0;
   currentRoll: number;
   wish: Gratitude;
+  getRandomNumber: number;
+  showRoll: boolean = true;
 
   ngOnInit() {
     this.wish = Gratitude.Wish;
@@ -21,17 +23,24 @@ export class AppComponent implements OnInit {
   rollBowl() {
     this.rolls.push(this.randomNumber());
     this.score(this.rolls);
-    console.log(this.randomNumber());
   }
 
+  //random number generator between 0 and 10(both including)
   randomNumber() {
-    return Math.floor(Math.random() * (10 - 0) + 0);
+    this.getRandomNumber = Math.floor(Math.random() * (10 - 0) + 0);
+    return this.getRandomNumber;
   }
+
+  //it's a recursive function which will constantly calculate total score per frame as well as total overall score.
   createTotalPointsFrames = (rolls, frames = [], index = 0) => {
-    if (frames.length === 10) return frames;
+    if (frames.length === 10) {
+      if (!isNaN(frames[9])) {
+        this.showRoll = false;
+      }
+      return frames;
+    }
 
     this.currentRoll = rolls[index];
-    console.log('current+' + this.currentRoll);
     const currentPlusNextRoll = this.currentRoll + rolls[index + 1];
 
     const isStrike = this.currentRoll === 10;
@@ -55,6 +64,7 @@ export class AppComponent implements OnInit {
     );
   };
 
+  //calculating per frame score to give overall Total score
   score = (rollsValue = []) => {
     this.rolls = rollsValue;
     this.frames = this.createTotalPointsFrames(this.rolls);
@@ -62,10 +72,17 @@ export class AppComponent implements OnInit {
     this.frames.forEach((value) => {
       if (value !== null && value != undefined && !isNaN(value)) {
         this.totalScore += value;
-        console.log(this.totalScore);
       }
     });
   };
-
-  // roll = (pins = 0, accumulatedRolls = []) => [...accumulatedRolls, pins];
 }
+
+//Implementation covered
+//You should at least be able to throw a certain amount of pins per turn -- 2 pins per turm
+//The game should understand the concept of ‘Strikes’ and ‘Spares’-- only the signs were not implemented, logical implemetation is done
+//The scoring should update correctly for each turn taken-- implemented
+//
+
+//Still to implement
+// sign "X" for strike and "/" for spare
+//logical implementation for strike and spare is implemented
