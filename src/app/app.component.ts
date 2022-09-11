@@ -21,13 +21,22 @@ export class AppComponent implements OnInit {
   }
 
   rollBowl() {
-    this.rolls.push(this.randomNumber());
+    this.rolls.push(this.randomBowl());
     this.score(this.rolls);
   }
 
   //random number generator between 0 and 10(both including)
-  randomNumber() {
-    this.getRandomNumber = Math.floor(Math.random() * (10 - 0) + 0);
+  //this logic restricts the random number generator to not go beyond 10
+  //eg: first number = 3
+  //second number will be leaas than equal to 7 but cannot be greater than 7
+
+  randomBowl() {
+    if (this.getRandomNumber == null || 0) {
+      this.getRandomNumber = Math.floor(Math.random() * 11);
+      return this.getRandomNumber;
+    }
+    var rest = 11 - this.getRandomNumber;
+    this.getRandomNumber = Math.floor(Math.random() * rest);
     return this.getRandomNumber;
   }
 
