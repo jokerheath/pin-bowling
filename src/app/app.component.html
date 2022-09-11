@@ -21,7 +21,7 @@
 
     <section id="current-roll">
       <div class="score">
-        You scored: <span id="score">{{ result }} </span>
+        You scored: {{ currentRoll }}<span id="score"> </span>
       </div>
       <br />
     </section>
@@ -45,46 +45,116 @@
           </tr>
           <tr id="scores">
             <th rowspan="2"><span id="player-name">Mr Cool</span></th>
-            <td><span id="roll-1"> </span></td>
-            <td><span id="roll-2"></span></td>
-            <td><span id="roll-3"></span></td>
-            <td><span id="roll-4"></span></td>
-            <td><span id="roll-5"></span></td>
-            <td><span id="roll-6"></span></td>
-            <td><span id="roll-7"></span></td>
-            <td><span id="roll-8"></span></td>
-            <td><span id="roll-9"></span></td>
-            <td><span id="roll-10"></span></td>
-            <td><span id="roll-11"></span></td>
-            <td><span id="roll-12"></span></td>
-            <td><span id="roll-13"></span></td>
-            <td><span id="roll-14"></span></td>
-            <td><span id="roll-15"></span></td>
-            <td><span id="roll-16"></span></td>
-            <td><span id="roll-17"></span></td>
-            <td><span id="roll-18"></span></td>
-            <td><span id="roll-19"></span></td>
-            <td><span id="roll-20"></span></td>
-            <td rowspan="2"><span id="total"></span></td>
+            <td>
+              <span id="roll-1">{{ rolls[0] }} </span>
+            </td>
+            <td>
+              <span id="roll-2">{{ rolls[1] }}</span>
+            </td>
+            <td>
+              <span id="roll-3">{{ rolls[2] }}</span>
+            </td>
+            <td>
+              <span id="roll-4">{{ rolls[3] }}</span>
+            </td>
+            <td>
+              <span id="roll-5">{{ rolls[4] }}</span>
+            </td>
+            <td>
+              <span id="roll-6">{{ rolls[5] }}</span>
+            </td>
+            <td>
+              <span id="roll-7">{{ rolls[6] }}</span>
+            </td>
+            <td>
+              <span id="roll-8">{{ rolls[7] }}</span>
+            </td>
+            <td>
+              <span id="roll-9">{{ rolls[8] }}</span>
+            </td>
+            <td>
+              <span id="roll-10">{{ rolls[9] }}</span>
+            </td>
+            <td>
+              <span id="roll-11">{{ rolls[10] }}</span>
+            </td>
+            <td>
+              <span id="roll-12">{{ rolls[11] }}</span>
+            </td>
+            <td>
+              <span id="roll-13">{{ rolls[12] }}</span>
+            </td>
+            <td>
+              <span id="roll-14">{{ rolls[13] }}</span>
+            </td>
+            <td>
+              <span id="roll-15">{{ rolls[14] }}</span>
+            </td>
+            <td>
+              <span id="roll-16">{{ rolls[15] }}</span>
+            </td>
+            <td>
+              <span id="roll-17">{{ rolls[16] }}</span>
+            </td>
+            <td>
+              <span id="roll-18">{{ rolls[17] }}</span>
+            </td>
+            <td>
+              <span id="roll-19">{{ rolls[18] }}</span>
+            </td>
+            <td>
+              <span id="roll-20">{{ rolls[19] }}</span>
+            </td>
+            <td rowspan="2">
+              <span *ngIf="totalScore" id="total"> {{ totalScore }}</span>
+            </td>
           </tr>
           <tr>
-            <td colspan="2"><span id="turn-score-0"></span></td>
-            <td colspan="2"><span id="turn-score-1"></span></td>
-            <td colspan="2"><span id="turn-score-2"></span></td>
-            <td colspan="2"><span id="turn-score-3"></span></td>
-            <td colspan="2"><span id="turn-score-4"></span></td>
-            <td colspan="2"><span id="turn-score-5"></span></td>
-            <td colspan="2"><span id="turn-score-6"></span></td>
-            <td colspan="2"><span id="turn-score-7"></span></td>
-            <td colspan="2"><span id="turn-score-8"></span></td>
-            <td colspan="2"><span id="turn-score-9"></span></td>
+            <td colspan="2">
+              <span *ngIf="frames?.[0]" id="turn-score-0">{{ frames[0] }}</span>
+            </td>
+            <td colspan="2">
+              <span *ngIf="frames?.[1]" id="turn-score-1">{{ frames[1] }}</span>
+            </td>
+            <td colspan="2">
+              <span *ngIf="frames?.[2]" id="turn-score-2">{{ frames[2] }}</span>
+            </td>
+            <td colspan="2">
+              <span *ngIf="frames?.[3]" id="turn-score-3">{{ frames[3] }}</span>
+            </td>
+            <td colspan="2">
+              <span *ngIf="frames?.[4]" id="turn-score-4">{{ frames[4] }}</span>
+            </td>
+            <td colspan="2">
+              <span *ngIf="frames?.[5]" id="turn-score-5">{{ frames[5] }}</span>
+            </td>
+            <td colspan="2">
+              <span *ngIf="frames?.[6]" id="turn-score-6">{{ frames[6] }}</span>
+            </td>
+            <td colspan="2">
+              <span
+                *ngIf="frames?.[7]"
+                id="turn-score-7"
+                >{{ frames?.[7] }}</span
+              >
+            </td>
+            <td colspan="2">
+              <span
+                *ngIf="frames?.[8]"
+                id="turn-score-8"
+                >{{ frames?.[8] }}</span
+              >
+            </td>
+            <td colspan="2">
+              <span
+                *ngIf="frames?.[9]"
+                id="turn-score-9"
+                >{{ frames?.[9] }}</span
+              >
+            </td>
           </tr>
         </tbody>
       </table>
     </section>
-
-    <!-- <script src="src/Bowling.js"></script>
-      <script src="src/ScoreBoard.js"></script>
-      <script src="src/MainScreen.js"></script> -->
   </body>
 </html>
