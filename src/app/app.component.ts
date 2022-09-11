@@ -1,4 +1,5 @@
 import { Component, OnInit, VERSION } from '@angular/core';
+import { Gratitude } from './pin-bowling-enum';
 
 @Component({
   selector: 'my-app',
@@ -6,14 +7,15 @@ import { Component, OnInit, VERSION } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  name = 'Angular ' + VERSION.major;
+  name: string;
   frames: any;
   rolls: any = [];
   totalScore: number = 0;
   currentRoll: number;
+  wish: Gratitude;
 
   ngOnInit() {
-    //this.score([2, 4]);
+    this.wish = Gratitude.Wish;
   }
 
   rollBowl() {
@@ -64,6 +66,4 @@ export class AppComponent implements OnInit {
       }
     });
   };
-
-  // roll = (pins = 0, accumulatedRolls = []) => [...accumulatedRolls, pins];
 }

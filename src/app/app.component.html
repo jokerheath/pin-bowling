@@ -1,4 +1,6 @@
-<hello name="{{ name }}"></hello>
+<hello name="{{ name }}"> </hello> {{ wish }}
+<p>Enter Your Name</p>
+<input type="text" [(ngModel)]="name" />
 
 <!DOCTYPE html>
 
@@ -6,10 +8,6 @@
   <head>
     <title>Bowling</title>
     <meta charset="utf-8" />
-    <!-- <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    /> -->
   </head>
 
   <body>
@@ -42,7 +40,9 @@
             <th colspan="2">Total</th>
           </tr>
           <tr id="scores">
-            <th rowspan="2"><span id="player-name">Mr Cool</span></th>
+            <th rowspan="2">
+              <span id="player-name">{{ name }}</span>
+            </th>
             <td>
               <span id="roll-1">{{ rolls[0] }} </span>
             </td>
