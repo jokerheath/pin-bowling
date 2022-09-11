@@ -16,66 +16,64 @@ var $: any;
 })
 export class AppComponent implements OnInit {
   name = 'Angular ' + VERSION.major;
-  score: any;
-  //test = true;
-  rollScore: 0;
-  scoreString: string;
-  timeOut: any;
-  i: 0;
-  total: '0';
-  turn: string;
-  gameTotal: any;
 
-  constructor(
-    private scoreboard: ScoreBoardComponent,
-    private bowling: BowlingComponent,
-    private el: ElementRef,
-    private _renderer: Renderer2
-  ) {}
-
-  addRemoveClass() {
-    //let myTag = this.el.nativeElement.querySelector("p"); // you can select html element by getelementsByClassName also, please use as per your requirement.
-    //return document.getElementById('roll').getElementsByClassName('ball');
-  }
-
-  // hideNavBar() {
-  //   this.test = false;
-  // }
+  frames: any;
+  rolls: any = [];
+  totalScore: number = 0;
+  currentRoll: number;
 
   ngOnInit() {
-    this.roll();
+    //this.score([2, 4]);
   }
 
-  roll() {
-    $(document).ready(function () {
-      var bowling = this.bowling;
-      var scoreBoard = this.scoreboard;
-      var rollScore = 0;
-      var scoreString = '0';
-      var timeOut = 0;
-      var i = 0;
-      var total = '0';
-      var turn = '0';
-      var gameTotal = 0;
+  rollBowl() {
+    this.rolls.push(this.randomNumber());
+    this.score(this.rolls);
+    console.log(this.randomNumber());
+  }
 
-      $('#roll').click(function () {
-        $('#roll').hide();
-        $('.ball').attr('class', 'rolling');
-        rollScore = bowling.roll();
-        scoreString = scoreBoard.getScore(rollScore);
-        total = scoreBoard.turnTotal();
-        gameTotal = scoreBoard.sumTotal(rollScore);
-        var num = (i += 1);
-        timeOut = setTimeout(function () {
-          $('.rolling').attr('class', 'ball');
-          $('#score').text(scoreString);
-          $('#roll').show();
-          $('#roll-' + num).text(scoreString);
-          $('#turn-score-' + turn).text(total);
-          $('#total').text(gameTotal);
-          turn = scoreBoard.currentTurn().toString();
-        }, 2000);
-      });
+  randomNumber() {
+    return Math.floor(Math.random() * (10 - 0) + 0);
+  }
+  createTotalPointsFrames = (rolls, frames = [], index = 0) => {
+    if (frames.length === 10) return frames;
+
+    this.currentRoll = rolls[index];
+    console.log('current+' + this.currentRoll);
+    const currentPlusNextRoll = this.currentRoll + rolls[index + 1];
+
+    const isStrike = this.currentRoll === 10;
+    const isSpare = currentPlusNextRoll === 10;
+
+    if (isStrike || isSpare) {
+      const points = currentPlusNextRoll + rolls[index + 2];
+      const nextIndex = isStrike ? index + 1 : index + 2;
+
+      return this.createTotalPointsFrames(
+        rolls,
+        [...frames, points],
+        nextIndex
+      );
+    }
+
+    return this.createTotalPointsFrames(
+      rolls,
+      [...frames, currentPlusNextRoll],
+      index + 2
+    );
+  };
+
+  score = (rollsValue = []) => {
+    this.rolls = rollsValue;
+    this.frames = this.createTotalPointsFrames(this.rolls);
+    this.totalScore = 0;
+    this.frames.forEach((value) => {
+      if (value !== null && value != undefined && !isNaN(value)) {
+        this.totalScore += value;
+        console.log(this.totalScore);
+      }
     });
-  }
+  };
+
+  // roll = (pins = 0, accumulatedRolls = []) => [...accumulatedRolls, pins];
 }
