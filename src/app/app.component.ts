@@ -8,14 +8,23 @@ import { Component, OnInit, VERSION } from '@angular/core';
 export class AppComponent implements OnInit {
   name = 'Angular ' + VERSION.major;
   frames: any;
-  rolls: any;
+  rolls: any = [];
   totalScore: number = 0;
   currentRoll: number;
 
   ngOnInit() {
-    this.score([2]);
+    //this.score([2, 4]);
   }
 
+  rollBowl() {
+    this.rolls.push(this.randomNumber());
+    this.score(this.rolls);
+    console.log(this.randomNumber());
+  }
+
+  randomNumber() {
+    return Math.floor(Math.random() * (10 - 0) + 0);
+  }
   createTotalPointsFrames = (rolls, frames = [], index = 0) => {
     if (frames.length === 10) return frames;
 
@@ -44,18 +53,10 @@ export class AppComponent implements OnInit {
     );
   };
 
-  score = (rolls = []) => {
-    this.rolls = rolls;
-    this.frames = this.createTotalPointsFrames(rolls);
-    console.log('this is frame ' + this.frames);
-
-    console.log(
-      'reduce method+' +
-        this.frames.reduce(
-          (totalPoints, currentPoint) => totalPoints + currentPoint
-        )
-    );
-
+  score = (rollsValue = []) => {
+    this.rolls = rollsValue;
+    this.frames = this.createTotalPointsFrames(this.rolls);
+    this.totalScore = 0;
     this.frames.forEach((value) => {
       if (value !== null && value != undefined && !isNaN(value)) {
         this.totalScore += value;

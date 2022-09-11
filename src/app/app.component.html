@@ -6,17 +6,15 @@
   <head>
     <title>Bowling</title>
     <meta charset="utf-8" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <link
+    <!-- <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    <link rel="stylesheet" href="../../src/styles.css" />
+    /> -->
   </head>
 
   <body>
     <div class="ball">
-      <button id="roll">ROLL</button>
+      <button id="roll" (click)="rollBowl()">ROLL</button>
     </div>
 
     <section id="current-roll">
