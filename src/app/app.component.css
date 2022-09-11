@@ -1,4 +1,4 @@
-p {
+@import '../styles.css'; /* p {
   font-family: Lato;
 }
 
@@ -110,4 +110,4 @@ td {
 
 td {
   background-color: rgba(197, 148, 214, 0.59);
-}
+} */
