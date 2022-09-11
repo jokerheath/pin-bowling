@@ -1,6 +1,15 @@
 import { Component, OnInit, VERSION } from '@angular/core';
 import { Gratitude } from './pin-bowling-enum';
 
+import {
+  Component,
+  ElementRef,
+  OnInit,
+  Renderer2,
+  VERSION,
+} from '@angular/core';
+
+
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
@@ -8,6 +17,7 @@ import { Gratitude } from './pin-bowling-enum';
 })
 export class AppComponent implements OnInit {
   name: string;
+
   frames: any;
   rolls: any = [];
   totalScore: number = 0;

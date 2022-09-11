@@ -1,3 +1,4 @@
+
 <hello name="{{ name }}"> </hello> {{ wish }}
 <p>Enter Your Name</p>
 <input type="text" [(ngModel)]="name" />
@@ -8,10 +9,12 @@
   <head>
     <title>Bowling</title>
     <meta charset="utf-8" />
+
   </head>
 
   <body>
     <div class="ball">
+
       <button id="roll" (click)="rollBowl()">ROLL</button>
     </div>
 
@@ -19,6 +22,7 @@
       <div class="score">
         You scored: {{ currentRoll }}<span id="score"> </span>
       </div>
+
       <br />
     </section>
 
@@ -43,6 +47,7 @@
             <th rowspan="2">
               <span id="player-name">{{ name }}</span>
             </th>
+
             <td>
               <span id="roll-1">{{ rolls[0] }} </span>
             </td>
@@ -150,9 +155,11 @@
                 >{{ frames?.[9] }}</span
               >
             </td>
+
           </tr>
         </tbody>
       </table>
     </section>
+
   </body>
 </html>
