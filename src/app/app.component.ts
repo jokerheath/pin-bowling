@@ -1,4 +1,13 @@
-import { Component, OnInit, VERSION } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnInit,
+  Renderer2,
+  VERSION,
+} from '@angular/core';
+import { BowlingComponent } from './scoreBoard/bowling/bowling.component';
+import { ScoreBoardComponent } from './scoreBoard/score-board/score-board.component';
+var $: any;
 
 @Component({
   selector: 'my-app',
@@ -7,6 +16,7 @@ import { Component, OnInit, VERSION } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   name = 'Angular ' + VERSION.major;
+
   frames: any;
   rolls: any = [];
   totalScore: number = 0;
